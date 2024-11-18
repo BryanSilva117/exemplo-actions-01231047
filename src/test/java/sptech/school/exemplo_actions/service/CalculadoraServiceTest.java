@@ -8,11 +8,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculadoraServiceTest {
-    //test
+
     @Test
     @DisplayName("Quando acionado com 10 e 2, então deve retornar 5")
     public void testDividir() {
-
         CalculadoraService calculadoraService = new CalculadoraService();
         double a = 10;
         double b = 2;
@@ -30,14 +29,12 @@ public class CalculadoraServiceTest {
         double a = 10;
         double b = 0;
 
-        var expectedMessage = "400 BAD_REQUEST";
-
         ResponseStatusException exception = assertThrows(
                 ResponseStatusException.class, () -> {
                     calculadoraService.dividir(a, b);
                 }
         );
 
-        assertEquals(expectedMessage, exception.getMessage());
+        assertEquals("400 BAD_REQUEST \"Divisão por zero não é permitida\"", exception.getMessage());
     }
 }
