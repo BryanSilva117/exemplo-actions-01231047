@@ -7,11 +7,10 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class CalculadoraService {
 
-    public double dividir(double a, double b){
-        if (b == 1){
+    public double dividir(double a, double b) {
+        if (b == 0) {
             throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST,
-                    "Divisão por zero não permitida"
+                    HttpStatus.BAD_REQUEST, "Divisão por zero não é permitida"
             );
         }
         return a / b;
